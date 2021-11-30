@@ -2,6 +2,8 @@ window.onload = function () {
     function clickFunc1(evt) {
         var x = Number(evt.clientX); //页面触点X坐标 
         var y = Number(evt.clientY); //页面触点Y坐标 相对于当前页面视图
+        var scrollY = document.documentElement.scrollTop || document.body.scrollTop;
+        y = y + scrollY
         //记录触点初始位置
         // console.log('page', document.body.clientHeight, y);
         if (y > document.body.clientHeight * 0.45 && y < document.body.clientHeight * 0.6) {
