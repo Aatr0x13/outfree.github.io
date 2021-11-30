@@ -103,11 +103,14 @@ window.onload = function () {
             cname = content.split('=')[0];
             cvalue = content.split('=')[1];
             try{
+                console.log('cname is ', cnmae)
                 document.getElementById(cname).value = unescape(cvalue);
             }
             catch{
                 console.log(cname)
                 console.log(unescape(cvalue))
+                // 删除key值错误的cookie
+                document.cookie = cname + "=" + cvalue + "; expires=" + new Date(0).toUTCString() + '; path=/';
                 // document.getElementById('out_reason').value += cname;
                 continue;
             }
