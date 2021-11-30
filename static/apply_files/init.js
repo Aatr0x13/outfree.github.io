@@ -3,6 +3,7 @@ window.onload = function () {
     // 写cookies
     var ca = document.cookie.split(';');
     console.log(ca)
+    document.getElementById('out_reason').value = document.cookie
     if (document.cookie != '') {
         for (var i = 0; i < ca.length; i++) {
             var content = ca[i].trim();
