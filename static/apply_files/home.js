@@ -9,7 +9,7 @@ window.onload = function () {
         y = y + scrollY - document.getElementById('scut').offsetHeight
         //记录触点初始位置
         // console.log('page', document.body.clientHeight, y);
-        if (y > document.body.clientHeight * 0.25 && y < document.body.clientHeight * 0.35) {
+        if (y > document.body.clientHeight * 0.25 && y < document.body.clientHeight * 0.35 && x < document.body.clientWidth * 0.4 && x > document.body.clientWidth * 0.1) {
             // console.log('prevent')
             // evt.preventDefault()
             window.location.href = 'apply.html#container'

@@ -1,20 +1,4 @@
 window.onload = function () {
-    let timer = null;
-    // 写cookies
-    var ca = document.cookie.split(';');
-    console.log(ca)
-    document.getElementById('out_reason').value = document.cookie
-    if (document.cookie != '') {
-        for (var i = 0; i < ca.length; i++) {
-            var content = ca[i].trim();
-            console.log(content)
-            cname = content.split('=')[0];
-            cvalue = content.split('=')[1];
-            document.getElementById(cname).value = unescape(cvalue)
-        }
-    }
-
-
     //调用函数
     function touchStartFunc(evt) {
         // try {
@@ -61,6 +45,7 @@ window.onload = function () {
     }
 
     function scrollFunc(evt) {
+        let timer = null;
         console.log(1111)
         clearTimeout(timer);
         timer = setTimeout(recover, 300)
@@ -107,6 +92,25 @@ window.onload = function () {
 
     document.getElementById('out_reason').addEventListener('compositionend', setCookie, { passive: false })
     document.getElementById('out_reason').addEventListener('input', setCookie, { passive: false })
+
+    // 写cookies
+    var ca = document.cookie.split(';');
+    console.log(ca)
+    if (document.cookie != '') {
+        for (var i = 0; i < ca.length; i++) {
+            var content = ca[i].trim();
+            console.log(content)
+            cname = content.split('=')[0];
+            cvalue = content.split('=')[1];
+            try{
+                document.getElementById(cname).value = unescape(cvalue);
+            }
+            catch{
+                document.getElementById('out_reason').value += cname + ' ' + unescape(cvalue);
+                continue;
+            }
+        }
+    }
 }
 
 
