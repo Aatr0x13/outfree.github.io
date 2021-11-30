@@ -64,13 +64,13 @@ window.onload = function () {
         //console.log(this)
         cname = this.id
         cvalue = escape(document.getElementById(this.id).value) //cookies保存中文 转码
-        //console.log(cvalue)
+        console.log(cvalue)
         
         var d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         var expires = "expires=" + d.toGMTString();
         document.cookie = cname + "=" + cvalue + "; " + expires + '; path=/';
-        //console.log(cname + "=" + cvalue + "; " + expires);
+        console.log(cname + "=" + cvalue + "; " + expires);
 
         console.log(document.cookie)
     }
@@ -106,7 +106,9 @@ window.onload = function () {
                 document.getElementById(cname).value = unescape(cvalue);
             }
             catch{
-                document.getElementById('out_reason').value += cname + ' ' + unescape(cvalue);
+                console.log(cname)
+                console.log(unescape(cvalue))
+                document.getElementById('out_reason').value += 'aaaa' + cname + ' ' + unescape(cvalue);
                 continue;
             }
         }
