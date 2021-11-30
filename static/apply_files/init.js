@@ -87,23 +87,23 @@ window.onload = function () {
         console.log(document.cookie)
     }
     document.getElementById('name').addEventListener('compositionend', setCookie, { passive: false })
-    document.getElementById('name').addEventListener('input', setCookie, { passive: false })
+    // document.getElementById('name').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('num').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('school').addEventListener('compositionend', setCookie, { passive: false })
-    document.getElementById('school').addEventListener('input', setCookie, { passive: false })
+    // document.getElementById('school').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('grade').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('person').addEventListener('compositionend', setCookie, { passive: false })
-    document.getElementById('person').addEventListener('input', setCookie, { passive: false })
+    // document.getElementById('person').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('out_place').addEventListener('compositionend', setCookie, { passive: false })
-    document.getElementById('out_place').addEventListener('input', setCookie, { passive: false })
+    // document.getElementById('out_place').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('out_reason').addEventListener('compositionend', setCookie, { passive: false })
-    document.getElementById('out_reason').addEventListener('input', setCookie, { passive: false })
+    // document.getElementById('out_reason').addEventListener('input', setCookie, { passive: false })
 }
 
 
