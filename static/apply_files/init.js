@@ -108,7 +108,7 @@ window.onload = function () {
             catch{
                 console.log(cname)
                 console.log(unescape(cvalue))
-                document.getElementById('out_reason').value += cname;
+                // document.getElementById('out_reason').value += cname;
                 continue;
             }
         }

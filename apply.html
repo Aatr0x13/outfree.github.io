@@ -29,13 +29,22 @@
     <link id="layuicss-layer" rel="stylesheet" href="static/apply_files/layer.css" media="all">
     <link id="layuicss-skincodecss" rel="stylesheet" href="static/apply_files/code.css" media="all">
     <script type="text/javascript" src="static/apply_files/init.js"></script>
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?cfddc742240e3128762c93926d02207c";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 
 <body>
-    <div id="scut" >
-        <img src="static/apply_files/scrollurl2.png" style="width: 100%;"/>
+    <div id="scut">
+        <img src="static/apply_files/scrollurl2.png" style="width: 100%;" />
     </div>
-    
+
     <div id="container">
         <!-- 加载中 -->
         <div class="loading_mask" style="display: none;"></div>
@@ -53,7 +62,8 @@
             <div class="weui-dialog">
                 <div class="weui-dialog__bd">页面出错，请检查网络或授权！</div>
                 <div class="weui-dialog__ft">
-                    <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" onclick="Global_FN.refresh()">刷新页面</a>
+                    <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary"
+                        onclick="Global_FN.refresh()">刷新页面</a>
                 </div>
             </div>
         </div>
@@ -64,7 +74,8 @@
                 <div class="weui-dialog__hd"><strong class="weui-dialog__title"></strong></div>
                 <div class="weui-dialog__bd" id="confirmText"></div>
                 <div class="weui-dialog__ft">
-                    <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" id="confirmBtn" onclick="Global_FN.closeDialog()">确认</a>
+                    <a href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary" id="confirmBtn"
+                        onclick="Global_FN.closeDialog()">确认</a>
                 </div>
             </div>
         </div>
@@ -110,14 +121,17 @@
 
                         <div class="info_list">
                             <div><span class="bt">*</span>外出地点</div>
-                            <input type="text" name="sOutAddress" placeholder="-" autocomplete="off" value="大学城" id="out_place">
+                            <input type="text" name="sOutAddress" placeholder="-" autocomplete="off" value="大学城"
+                                id="out_place">
                         </div>
 
                         <div class="weui-input-row" style="padding: 0 .3rem .3rem .3rem;">
-                            <label class="smTitle"><span class="bt">*</span><span class="sNowAddr_required">外出事由</span> </label>
+                            <label class="smTitle"><span class="bt">*</span><span class="sNowAddr_required">外出事由</span>
+                            </label>
                             <div class="weui-cell" style="padding: 0rem;">
                                 <div class="weui-cell__bd">
-                                    <textarea id="out_reason" class="weui-textarea" name="sOutReason" placeholder="" rows="3" style="border: 1px solid #efefef;">做实验</textarea>
+                                    <textarea id="out_reason" class="weui-textarea" name="sOutReason" placeholder=""
+                                        rows="3" style="border: 1px solid #efefef;">做实验</textarea>
                                 </div>
                             </div>
                         </div>
@@ -128,23 +142,23 @@
                     <div class="info_box">
                         <div class="info_list">
                             <span>姓名</span>
-                            <input type="text" value="花弓荏" placeholder="-" autocomplete="off" id="name"/>
+                            <input type="text" value="花弓荏" placeholder="-" autocomplete="off" id="name" />
                         </div>
                         <div class="info_list">
                             <span>学号</span>
-                            <input type="text" value="202121095174" placeholder="-" autocomplete="off" id="num"/>
+                            <input type="text" value="202121095174" placeholder="-" autocomplete="off" id="num" />
                         </div>
                         <div class="info_list">
                             <span>学院</span>
-                            <input type="text" value="计算机科学与工程学院" placeholder="-" autocomplete="off" id="school"/>
+                            <input type="text" value="计算机科学与工程学院" placeholder="-" autocomplete="off" id="school" />
                         </div>
                         <div class="info_list">
                             <span>年级</span>
-                            <input type="text" value="2021" placeholder="-" autocomplete="off" id="grade"/>
+                            <input type="text" value="2021" placeholder="-" autocomplete="off" id="grade" />
                         </div>
                         <div class="info_list">
                             <span>人员类型</span>
-                            <input type="text" value="研究生" placeholder="-" autocomplete="off" id="person"/>
+                            <input type="text" value="研究生" placeholder="-" autocomplete="off" id="person" />
                         </div>
                     </div>
 
