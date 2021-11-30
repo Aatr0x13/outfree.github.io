@@ -9,7 +9,7 @@ window.onload = function () {
             console.log(content)
             cname = content.split('=')[0];
             cvalue = content.split('=')[1];
-            document.getElementById(cname).value = cvalue
+            document.getElementById(cname).value = unescape(cvalue)
         }
     }
 
@@ -77,33 +77,35 @@ window.onload = function () {
         exdays = 100
         //console.log(this)
         cname = this.id
-        cvalue = document.getElementById(this.id).value
+        cvalue = escape(document.getElementById(this.id).value) //cookies保存中文 转码
         //console.log(cvalue)
+        
         var d = new Date();
         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
         var expires = "expires=" + d.toGMTString();
         document.cookie = cname + "=" + cvalue + "; " + expires + '; path=/';
         //console.log(cname + "=" + cvalue + "; " + expires);
+
         console.log(document.cookie)
     }
     document.getElementById('name').addEventListener('compositionend', setCookie, { passive: false })
-    // document.getElementById('name').addEventListener('input', setCookie, { passive: false })
+    document.getElementById('name').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('num').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('school').addEventListener('compositionend', setCookie, { passive: false })
-    // document.getElementById('school').addEventListener('input', setCookie, { passive: false })
+    document.getElementById('school').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('grade').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('person').addEventListener('compositionend', setCookie, { passive: false })
-    // document.getElementById('person').addEventListener('input', setCookie, { passive: false })
+    document.getElementById('person').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('out_place').addEventListener('compositionend', setCookie, { passive: false })
-    // document.getElementById('out_place').addEventListener('input', setCookie, { passive: false })
+    document.getElementById('out_place').addEventListener('input', setCookie, { passive: false })
 
     document.getElementById('out_reason').addEventListener('compositionend', setCookie, { passive: false })
-    // document.getElementById('out_reason').addEventListener('input', setCookie, { passive: false })
+    document.getElementById('out_reason').addEventListener('input', setCookie, { passive: false })
 }
 
 
