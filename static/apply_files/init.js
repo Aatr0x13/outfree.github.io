@@ -103,7 +103,7 @@ window.onload = function () {
             cname = content.split('=')[0];
             cvalue = content.split('=')[1];
             try{
-                console.log('cname is ', cnmae)
+                console.log('cname is ', cname)
                 document.getElementById(cname).value = unescape(cvalue);
             }
             catch{
