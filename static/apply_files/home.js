@@ -1,6 +1,6 @@
 window.onload = function () {
     let timer = null;
-
+    var is_img_hidden = 0
     function clickFunc(evt) {
         var x = Number(evt.clientX); //页面触点X坐标 
         var y = Number(evt.clientY); //页面触点Y坐标 相对于当前页面视图
@@ -27,35 +27,51 @@ window.onload = function () {
         // height = document.getElementsByTagName('img')[0].heights
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-        if (scrollTop < height) {
-            document.getElementById('page3').scrollIntoView()
+        if (scrollTop > height && is_img_hidden == 0){
+            document.getElementById('scut').style.display = 'none';
+            is_img_hidden = 1
+        }
+        if (scrollTop < height && is_img_hidden == 0) {
+            setTimeout(function(){
+                document.getElementById('page3').scrollIntoView();
+            }, 100)         
         }
     }
 
-    function recover() {
-        height = document.getElementById('scut').offsetHeight
-        // console.log(document.getElementById('scut'))
-        // height = document.getElementsByTagName('img')[0].heights
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-        // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
-        if (scrollTop < height) {
-            document.getElementById('page3').scrollIntoView()
-            console.log('back')
-        }
-        console.log('scrollFunc')
-    }
+    // function recover() {
+    //     height = document.getElementById('scut').offsetHeight
+    //     // console.log(document.getElementById('scut'))
+    //     // height = document.getElementsByTagName('img')[0].heights
+    //     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //     console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+    //     // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
+    //     if (scrollTop < height) {
+    //         document.getElementById('page3').scrollIntoView()
+    //         console.log('back')
+    //     }
+    //     console.log('scrollFunc')
+    // }
 
-    function scrollFunc(evt) {
-        console.log(1111)
-        clearTimeout(timer);
-        timer = setTimeout(recover, 300)
-    }
+    // function scrollFunc(evt) {
+    //     console.log(1111)
+    //     clearTimeout(timer);
+    //     timer = setTimeout(recover, 300)
+    // }
     // 监听
     //document.addEventListener('touchmove', touchMoveFunc, { passive: false });
     document.getElementById('page3').addEventListener('click', clickFunc, { passive: false })
     document.addEventListener('touchstart', touchStartFunc, { passive: false });
     document.addEventListener('touchend', touchEndFunc, { passive: false });
     document.addEventListener('touchcancel', touchEndFunc, { passive: false });
-    document.addEventListener('wheel', scrollFunc, { passive: false });
+    //document.addEventListener('wheel', scrollFunc, { passive: false });
+
+    function hideImg(){
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop == 0 && is_img_hidden == 1){
+            document.getElementById('scut').style.display = 'block';
+            is_img_hidden = 0;
+            document.getElementById('page3').scrollIntoView()
+        }
+    }
+    setInterval(hideImg, 100)
 }

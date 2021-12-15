@@ -1,5 +1,6 @@
 window.onload = function () {
     //调用函数
+    var is_img_hidden = 0
     function touchStartFunc(evt) {
         // try {
         //     //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
@@ -23,39 +24,54 @@ window.onload = function () {
         // console.log(document.getElementById('scut'))
         // height = document.getElementsByTagName('img')[0].heights
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop, height)
+        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop, height, is_img_hidden)
         // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
-        if (scrollTop < height) {
-            document.getElementById('container').scrollIntoView()
+        if (scrollTop > height && is_img_hidden == 0){
+            document.getElementById('scut').style.display = 'none';
+            is_img_hidden = 1
+        }
+        if (scrollTop < height && is_img_hidden == 0) {
+            setTimeout(function(){
+                document.getElementById('container').scrollIntoView();
+            }, 100)         
         }
     }
 
-    function recover() {
-        height = document.getElementById('scut').offsetHeight
-        // console.log(document.getElementById('scut'))
-        // height = document.getElementsByTagName('img')[0].heights
+    function hideImg(){
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
-        // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
-        if (scrollTop < height) {
+        if (scrollTop == 0 && is_img_hidden == 1){
+            document.getElementById('scut').style.display = 'block';
+            is_img_hidden = 0;
             document.getElementById('container').scrollIntoView()
-            console.log('back')
         }
-        console.log('scrollFunc')
     }
+    // function recover() {
+    //     height = document.getElementById('scut').offsetHeight
+    //     // console.log(document.getElementById('scut'))
+    //     // height = document.getElementsByTagName('img')[0].heights
+    //     var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //     console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+    //     // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
+    //     if (scrollTop < height) {
+    //         document.getElementById('container').scrollIntoView()
+    //         console.log('back')
+    //     }
+    //     console.log('scrollFunc')
+    // }
 
-    function scrollFunc(evt) {
-        let timer = null;
-        console.log(1111)
-        clearTimeout(timer);
-        timer = setTimeout(recover, 300)
-    }
+    // function scrollFunc(evt) {
+    //     let timer = null;
+    //     console.log(1111)
+    //     clearTimeout(timer);
+    //     timer = setTimeout(recover, 300)
+    // }
     // 监听
     //document.addEventListener('touchmove', touchMoveFunc, { passive: false });
     document.addEventListener('touchstart', touchStartFunc, { passive: false });
     document.addEventListener('touchend', touchEndFunc, { passive: false });
     document.addEventListener('touchcancel', touchEndFunc, { passive: false });
-    document.addEventListener('wheel', scrollFunc, { passive: false });
+    //document.addEventListener('wheel', scrollFunc, { passive: false });
+    setInterval(hideImg, 100)
 
     // 存储cookies
     function setCookie() {
