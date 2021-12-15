@@ -1,6 +1,22 @@
 window.onload = function () {
-    //调用函数
+    var iswx = 1;
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true; // 是微信端
+        } else {
+            return false;
+        }
+    }
+
+    if (isWeiXin() == false){
+        document.getElementById('scut').style.display = 'none';
+        iswx = 0;
+    }
+    //是否隐藏上方url图像
     var is_img_hidden = 0
+
+    //调用函数
     function touchStartFunc(evt) {
         // try {
         //     //evt.preventDefault(); //阻止触摸时浏览器的缩放、滚动条滚动等
@@ -20,6 +36,9 @@ window.onload = function () {
     }
 
     function touchEndFunc(evt) {
+        if (iswx == 0){
+            return;
+        }  
         height = document.getElementById('scut').offsetHeight
         // console.log(document.getElementById('scut'))
         // height = document.getElementsByTagName('img')[0].heights
@@ -37,7 +56,10 @@ window.onload = function () {
         }
     }
 
-    function hideImg(){
+    function showImg(){
+        if (iswx == 0){
+            return;
+        }           
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (scrollTop == 0 && is_img_hidden == 1){
             document.getElementById('scut').style.display = 'block';
@@ -71,7 +93,7 @@ window.onload = function () {
     document.addEventListener('touchend', touchEndFunc, { passive: false });
     document.addEventListener('touchcancel', touchEndFunc, { passive: false });
     //document.addEventListener('wheel', scrollFunc, { passive: false });
-    setInterval(hideImg, 100)
+    setInterval(showImg, 100)
 
     // 存储cookies
     function setCookie() {

@@ -1,5 +1,20 @@
 window.onload = function () {
-    let timer = null;
+    var iswx = 1;
+    function isWeiXin() {
+        var ua = window.navigator.userAgent.toLowerCase();
+        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+            return true; // 是微信端
+        } else {
+            return false;
+        }
+    }
+
+    if (isWeiXin() == false){
+        document.getElementById('scut').style.display = 'none';
+        iswx = 0;
+    }
+
+    
     var is_img_hidden = 0
     function clickFunc(evt) {
         var x = Number(evt.clientX); //页面触点X坐标 
@@ -22,6 +37,9 @@ window.onload = function () {
     }
 
     function touchEndFunc(evt) {
+        if (iswx == 0){
+            return;
+        } 
         height = document.getElementById('scut').offsetHeight
         // console.log(document.getElementById('scut'))
         // height = document.getElementsByTagName('img')[0].heights
@@ -53,6 +71,7 @@ window.onload = function () {
     // }
 
     // function scrollFunc(evt) {
+    //     let timer = null;
     //     console.log(1111)
     //     clearTimeout(timer);
     //     timer = setTimeout(recover, 300)
@@ -65,7 +84,10 @@ window.onload = function () {
     document.addEventListener('touchcancel', touchEndFunc, { passive: false });
     //document.addEventListener('wheel', scrollFunc, { passive: false });
 
-    function hideImg(){
+    function showImg(){
+        if (iswx == 0){
+            return;
+        } 
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
         if (scrollTop == 0 && is_img_hidden == 1){
             document.getElementById('scut').style.display = 'block';
@@ -73,5 +95,5 @@ window.onload = function () {
             document.getElementById('page3').scrollIntoView()
         }
     }
-    setInterval(hideImg, 100)
+    setInterval(showImg, 100)
 }
