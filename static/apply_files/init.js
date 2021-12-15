@@ -23,7 +23,7 @@ window.onload = function () {
         // console.log(document.getElementById('scut'))
         // height = document.getElementsByTagName('img')[0].heights
         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+        console.log(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop, height)
         // document.getElementById('out_reason').value = height + '\n' + document.documentElement.scrollTop + '\n' + document.body.scrollTop
         if (scrollTop < height) {
             document.getElementById('container').scrollIntoView()
