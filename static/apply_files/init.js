@@ -56,17 +56,6 @@ window.onload = function () {
         }
     }
 
-    function showImg(){
-        if (iswx == 0){
-            return;
-        }           
-        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
-        if (scrollTop == 0 && is_img_hidden == 1){
-            document.getElementById('scut').style.display = 'block';
-            is_img_hidden = 0;
-            document.getElementById('container').scrollIntoView()
-        }
-    }
     // function recover() {
     //     height = document.getElementById('scut').offsetHeight
     //     // console.log(document.getElementById('scut'))
@@ -93,7 +82,35 @@ window.onload = function () {
     document.addEventListener('touchend', touchEndFunc, { passive: false });
     document.addEventListener('touchcancel', touchEndFunc, { passive: false });
     //document.addEventListener('wheel', scrollFunc, { passive: false });
-    setInterval(showImg, 100)
+
+    //监视当前位置是否需要显示url图像
+    function showImg(){
+        if (iswx == 0){
+            return;
+        }           
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop == 0 && is_img_hidden == 1){
+            document.getElementById('scut').style.display = 'block';
+            is_img_hidden = 0;
+            document.getElementById('container').scrollIntoView()
+        }
+    }
+    setInterval(showImg, 100);
+
+    function clickFunc(evt) {
+        var x = Number(evt.clientX); //页面触点X坐标 
+        var y = Number(evt.clientY); //页面触点Y坐标 相对于当前页面视图
+        if (x < document.body.clientWidth * 0.3 && y < document.body.clientHeight * 0.3) {
+            document.getElementById('out_place').readOnly = 'readonly';
+            document.getElementById('out_reason').readOnly = 'readonly';
+            document.getElementById('name').readOnly = 'readonly';
+            document.getElementById('num').readOnly = 'readonly';
+            document.getElementById('school').readOnly = 'readonly';
+            document.getElementById('grade').readOnly = 'readonly';
+            document.getElementById('person').readOnly = 'readonly';
+        }
+    }
+    document.getElementById('container').addEventListener('click', clickFunc, { passive: false })
 
     // 存储cookies
     function setCookie() {
